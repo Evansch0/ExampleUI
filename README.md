@@ -8,9 +8,8 @@ This project is a frontend-only recreation of a simplified Discord-like applicat
 1.  **Clone the repository:**
 
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/Evansch0/ExampleUI
     ```
-    Replace `<repository_url>` with the actual URL of your GitHub repository.
 
 2.  **Open `index.html` in your browser:**
 
