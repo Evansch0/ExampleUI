@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord-like App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body role="application">
+
+    <aside class="sidebar" aria-label="Server Sidebar" data-component="sidebar">
+        <header class="server-header" data-component="server-header">
+            <h1 class="server-name" id="server-name" data-server-id="123">Test Server</h1>
+            <button class="server-dropdown" aria-label="Server Options" aria-haspopup="menu" aria-expanded="false" aria-controls="server-options-menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m7 10 5 5 5-5z" fill="currentColor"/>
+                </svg>
+            </button>
+            <ul id="server-options-menu" role="menu" aria-labelledby="server-name" hidden>
+              <li role="menuitem"><a href="#" data-action="server-settings">Server Settings</a></li>
+              <li role="menuitem"><a href="#" data-action="create-channel">Create Channel</a></li>
+              <li role="menuitem"><a href="#" data-action="invite-people">Invite People</a></li>
+              <li role="separator"></li>
+              <li role="menuitem"><a href="#" data-action="leave-server">Leave Server</a></li>
+            </ul>
+        </header>
+
+        <div class="search-bar" data-component="server-search">
+            <label for="server-search" class="sr-only">Search Server</label>
+            <input type="search" id="server-search" placeholder="Search Test Server" aria-describedby="server-search-help">
+            <span id="server-search-help" class="sr-only">Enter a search term to filter channels and sections.</span>
+        </div>
+
+        <nav class="sections" aria-label="Server Sections" data-component="sections-nav">
+            <ul>
+                <li class="section-item active"><a href="#overview" role="link" aria-current="page" data-section-id="overview">Overview</a></li>
+                <li class="section-item"><a href="#members" role="link" data-section-id="members">Members</a></li>
+                <li class="section-item"><a href="#applications" role="link" data-section-id="applications">Applications</a></li>
+                <li class="section-item"><a href="#audit-log" role="link" data-section-id="audit-log">Audit Log</a></li>
+            </ul>
+        </nav>
+
+        <nav class="channels" aria-label="Server Channels" data-component="channels-nav">
+            <h2>Channels</h2>
+            <div class="channel-category" data-category="text">
+                <div class="category-header">
+                    <button class="category-toggle" aria-expanded="true" aria-controls="text-channels-list">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m9 6-6 4.33V1.67z" fill="currentColor"/>
+                        </svg>
+                        <span>Text Channels</span>
+                    </button>
+                    <button class="add-channel" aria-label="Create Text Channel" aria-haspopup="dialog" aria-controls="create-channel-dialog" data-action="create-channel">
+                        +
+                    </button>
+                </div>
+                <ul id="text-channels-list" role="list" data-component="channel-list">
+                    <li class="channel-item" role="listitem" data-channel-id="456"><a href="#general" role="link"># general</a></li>
+                    <li class="channel-item" role="listitem" data-channel-id="457"><a href="#random" role="link"># random</a></li>
+                    <li class="channel-item" role="listitem" data-channel-id="458"><a href="#memes" role="link"># memes</a></li>
+                </ul>
+            </div>
+
+            <div class="channel-category" data-category="voice">
+                <div class="category-header">
+                    <button class="category-toggle" aria-expanded="true" aria-controls="voice-channels-list">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m9 6-6 4.33V1.67z" fill="currentColor"/>
+                        </svg>
+                        <span>Voice Channels</span>
+                    </button>
+                    <button class="add-channel" aria-label="Create Voice Channel" aria-haspopup="dialog" aria-controls="create-channel-dialog" data-action="create-channel">
+                        +
+                    </button>
+                </div>
+                <ul id="voice-channels-list" role="list" data-component="channel-list">
+                    <li class="channel-item voice-channel" role="listitem" data-channel-id="789">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.5 3.5A5.5 5.5 0 0 1 21 9v6a5.5 5.5 0 0 1-5.5 5.5h-7A5.5 5.5 0 0 1 3 15V9a5.5 5.5 0 0 1 5.5-5.5z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <a href="#general-voice" role="link">General</a>
+                    </li>
+                    <li class="channel-item voice-channel" role="listitem" data-channel-id="790">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.5 3.5A5.5 5.5 0 0 1 21 9v6a5.5 5.5 0 0 1-5.5 5.5h-7A5.5 5.5 0 0 1 3 15V9a5.5 5.5 0 0 1 5.5-5.5z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <a href="#music-voice" role="link">Music</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="user-panel" role="group" aria-label="User Panel" data-component="user-panel">
+            <div class="user-info">
+                <img src="https://picsum.photos/32" alt="User Avatar" class="user-avatar" role="img" width="32" height="32"> <!-- Placeholder image -->
+                <span class="username" id="current-username" data-user-id="999">YourUsername</span>
+            </div>
+            <div class="user-controls">
+                 <button aria-label="Mute" aria-pressed="false" data-action="mute">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z" fill="currentColor"/>
+                    </svg>
+                </button>
+                <button aria-label="Deafen" aria-pressed="false" data-action="deafen">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 15V9c0-3.04 2.46-5.5 5.5-5.5h.5v-2c0-.83.67-1.5 1.5-1.5S16 .67 16 1.5v2h.5C19.54 3.5 22 5.96 22 9v6c0 3.04-2.46 5.5-5.5 5.5H16v2c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-2h-.5C9.46 20.5 7 18.04 7 15m5.5-9.5C10.57 5.5 9 7.07 9 9v6c0 1.93 1.57 3.5 3.5 3.5h.5v-2c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v2h.5c1.93 0 3.5-1.57 3.5-3.5V9c0-1.93-1.57-3.5-3.5-3.5H16v2c0 .83-.67 1.5-1.5 1.5S13 8.33 13 7.5v-2z" fill="currentColor"/>
+                    </svg>
+                </button>
+                <button aria-label="User Settings" aria-haspopup="dialog" aria-controls="user-settings-dialog" data-action="user-settings">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m294 128-6-14c20-45 18-46 15-50l-26-25-2-2h-3c-2 0-6 0-45 18l-14-6C194 3 193 3 187 3h-36c-5 0-7 0-24 46l-14 6C87 44 72 38 67 38h-3L37 65c-4 4-6 5 15 49l-6 14C0 146 0 148 0 153v35c0 6 0 8 47 25l5 13c-19 45-18 46-14 50l25 25 3 2h3c1 0 6 0 44-17l14 5c19 46 21 46 26 46h36c5 0 7 0 24-46l14-5c26 11 42 16 46 16h3l28-27c4-4 5-5-16-49l6-14c46-18 46-20 46-25v-35c0-6 0-8-46-24zM170 228c-33 0-59-26-59-58s26-58 59-58 60 26 60 58-27 58-60 58z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="create-channel-dialog" role="dialog" aria-modal="true" aria-labelledby="create-channel-title" hidden data-component="create-channel-dialog">
+            <h2 id="create-channel-title">Create Channel</h2>
+            <label for="new-channel-name">Channel Name:</label>
+            <input type="text" id="new-channel-name" required>
+            <label for="new-channel-type">Channel Type:</label>
+            <select id="new-channel-type">
+                <option value="text">Text</option>
+                <option value="voice">Voice</option>
+            </select>
+            <button data-action="create-channel-confirm">Create</button>
+            <button data-action="create-channel-cancel">Cancel</button>
+        </div>
+          <div id="user-settings-dialog" role="dialog" aria-modal="true" aria-labelledby="user-settings-title" hidden data-component="user-settings-dialog">
+              <h2 id="user-settings-title">User Settings</h2>
+               <label for="change-username">Change Username:</label>
+              <input type="text" id="change-username" required>
+                <label for="change-avatar">Change Avatar:</label>
+              <input type="file" id="change-avatar">
+              <button data-action="user-settings-save">Save</button>
+              <button data-action="user-settings-cancel">Cancel</button>
+          </div>
+    </aside>
+
+    <main class="main-content" aria-label="Main Content" data-component="main-content">
+        <header class="main-header" data-component="main-header">
+             <div class="server-icon-container">
+                <img src="https://picsum.photos/48" alt="Server Icon" class="server-icon" role="img" width="48" height="48">
+            </div>
+            <h2 class="main-title" data-server-id="123">Test Server</h2>
+            <div class="main-header-search">
+                <label for="main-search" class="sr-only">Search Messages</label>
+                <input type="search" id="main-search" placeholder="Search" aria-label="Search Messages">
+            </div>
+        </header>
+
+        <div class="announcement-bar">
+            <img class="announcement-icon" src="https://picsum.photos/24" role="img" width="24" height="24">
+            <p>Post an announcement</p>
+        </div>
+
+        <div class="message-area" role="log" aria-live="polite" data-component="message-area" data-channel-id="456">
+           <template id="message-template">
+                <article class="message" id="" data-message-id="">
+                    <img src="" alt="" class="message-avatar" role="img" width="40" height="40">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author" data-author-id=""></span>
+                            <time class="message-timestamp" datetime=""></time>
+                        </div>
+                        <p class = "message-text"></p>
+                        <div class="message-reactions" role="group" aria-label="Message Reactions">
+                            <button aria-label="Add Reaction" aria-haspopup="dialog" aria-controls="add-reaction-dialog" data-action="add-reaction">➕</button>
+                        </div>
+                    </div>
+                </article>
+            </template>
+
+            <article class="message" id="msg1" data-message-id="msg1">
+                <img src="https://picsum.photos/40?image=10" alt="User 1 Avatar" class="message-avatar" role="img" width="40" height="40">
+                <div class="message-content">
+                   <div class="message-header">
+                        <span class="message-author" data-author-id="user1">User1</span>
+                        <time class="message-timestamp" datetime="2024-07-27T16:20:00">Today at 4:20 PM</time>
+                    </div>
+                    <p class = "message-text">Hello everyone!</p>
+                </div>
+            </article>
+             <article class="message" id="msg2" data-message-id="msg2">
+                <img src="https://picsum.photos/40?image=20" alt="User 2 Avatar" class="message-avatar" role="img" width="40" height="40">
+                <div class="message-content">
+                     <div class="message-header">
+                        <span class="message-author" data-author-id="user2">User2</span>
+                        <time class="message-timestamp" datetime="2024-07-27T16:22:00">Today at 4:22 PM</time>
+                     </div>
+                    <p class = "message-text">Hey User1! How's it going?</p>
+                    <div class="message-reactions" role="group" aria-label="Message Reactions">
+                        <button aria-label="Add Reaction" aria-haspopup="dialog" aria-controls="add-reaction-dialog" data-action="add-reaction">➕</button>
+                        <button aria-label="React with 👍" aria-pressed="false" data-reaction="👍">👍 <span>1</span></button>
+                    </div>
+                </div>
+            </article>
+            <article class="message" id="msg3" data-message-id="msg3">
+                <img src="https://picsum.photos/40?image=30" alt="User 1 Avatar" class="message-avatar" role="img" width="40" height="40">
+                <div class="message-content">
+                     <div class="message-header">
+                        <span class="message-author" data-author-id="user1">User1</span>
+                        <time class="message-timestamp" datetime="2024-07-27T16:20:00">Today at 4:20 PM</time>
+                    </div>
+                    <p class = "message-text">Here is another message!</p>
+                </div>
+            </article>
+
+             <div id="add-reaction-dialog" role="dialog" aria-modal="true" aria-labelledby="add-reaction-title" hidden data-component="reaction-dialog">
+                <h2 id="add-reaction-title">Add Reaction</h2>
+                <button aria-label="React with 👍" data-reaction="👍">👍</button>
+                <button aria-label="React with ❤️" data-reaction="❤️">❤️</button>
+                <button aria-label="React with 😄" data-reaction="😄">😄</button>
+                 <button data-action="close-reaction-dialog">Close</button>
+            </div>
+        </div>
+
+        <div class="chat-input-area" data-component="chat-input">
+            <button class="add-attachment" aria-label="Add Attachment" data-action="add-attachment">
+                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5a2.5 2.5 0 0 1 5 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 0 0 5 0V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6z" fill="currentColor"/>
+                </svg>
+            </button>
+            <label for="chat-input" class="sr-only">Message Input</label>
+            <input type="text" id="chat-input" placeholder="Message #general" aria-multiline="true" required>
+            <button class="send-message" type="submit" aria-label="Send Message" data-action="send-message">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+    </main>
+</body>
+</html>
