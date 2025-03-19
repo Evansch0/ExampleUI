@@ -2,6 +2,9 @@
 
 This project is a frontend-only recreation of a simplified Discord-like application, built using HTML, CSS (with a focus on modern CSS features like custom properties, flexbox, and grid), and minimal, well structured, accessible HTML.
 
+## Screenshot
+
+![Screenshot of the main application interface](images/ui-screenshot.png)
 
 ## Getting Started
 
